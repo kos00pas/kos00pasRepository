@@ -1,0 +1,3 @@
+C:/Users/USER/Documents/Run_programms/325 Run/Assignment11_2020/cmake-build-debug/CMakeFiles/Assignment11_2020.dir
+C:/Users/USER/Documents/Run_programms/325 Run/Assignment11_2020/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/USER/Documents/Run_programms/325 Run/Assignment11_2020/cmake-build-debug/CMakeFiles/rebuild_cache.dir

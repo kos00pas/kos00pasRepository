@@ -1,0 +1,13 @@
+C:\Users\USER\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\213.6461.46\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/USER/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/213.6461.46/bin/ninja/win/ninja.exe -G Ninja "C:\Users\USER\Documents\Run_programms\325 Run"
+-- Configuring done
+CMake Error at CMakeLists.txt:32 (add_executable):
+  Cannot find source file:
+
+    ���035 - stack, queue , apla sind/apla_sindedemenes_listes.c
+
+
+CMake Error at CMakeLists.txt:32 (add_executable):
+  No SOURCES given to target: 325_Run
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

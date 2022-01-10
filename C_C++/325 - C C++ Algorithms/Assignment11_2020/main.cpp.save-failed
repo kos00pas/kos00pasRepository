@@ -1,0 +1,224 @@
+#include<iostream>
+#include<stdio.h>
+#include <fstream>
+#include <vector>
+#include <bits/stdc++.h>
+#include <set>
+
+using namespace std;
+#define INFINITY 9999
+#define max 5
+
+void dijkstra(int n,int startnode);
+void readText();
+void menu();
+void choice();
+void initializeVector();
+void printVectior();
+
+struct destination
+{
+	int x,y,w;
+};
+
+struct newDestination
+{
+	int x,y;
+};
+
+string input = "inputWeights.txt";
+int nodes;
+int edges;
+vector <destination> dest;
+vector <vector<int>> G;
+
+
+void readText()
+{
+    vector <string> vec;
+	string line;
+	ifstream myfile( input );
+	if (myfile.is_open())
+	{
+		while (getline(myfile,line))
+		{
+			vec.push_back(line);
+		}
+		myfile.close();
+	}
+	else
+		cout << "> Unable to open file\n";
+
+    // nodes
+    string str;
+    int j = 0;
+    int temp;
+    while (vec[0].size() != j)
+    {
+        str.push_back(vec[0][j]);
+        j++;
+    }
+    std::string::size_type sz;
+    temp = std::stoi(str,&sz);
+    nodes = temp;
+    str.clear();
+
+    // edges
+    j=0;
+    while (vec[1].size() != j)
+    {
+        str.push_back(vec[1][j]);
+        j++;
+    }
+    temp = std::stoi(str,&sz);
+    edges = temp;
+    str.clear();
+
+    // destination
+    for (int i = 2; i < vec.size(); i++ )
+    {
+        j = 0;
+        destination temp;
+        while (vec[i][j]!= ' ')
+        {
+            str.push_back(vec[i][j]);
+            j++;
+        }
+        std::string::size_type sz;
+        temp.x = std::stoi(str,&sz);
+        j++;
+        str.clear();
+        while (vec[i][j]!= ' ')
+        {
+            str.push_back(vec[i][j]);
+            j++;
+        }
+        temp.y = std::stoi(str,&sz);
+        j++;
+        str.clear();
+        while (vec[i].size() != j)
+        {
+            str.push_back(vec[i][j]);
+            j++;
+        }
+        temp.w = std::stoi(str,&sz);
+        dest.push_back(temp);
+        str.clear();
+    }
+}
+
+void dijkstra(int n,int startnode) {
+   int cost[nodes][nodes],distance[nodes],pred[nodes];
+   int visited[nodes],count,mindistance,nextnode,i,j;
+   for(i=0;i<n;i++)
+      for(j=0;j<n;j++)
+   if(G[i][j]==0)
+      cost[i][j]=INFINITY;
+   else
+      cost[i][j]=G[i][j];
+   for(i=0;i<n;i++) {
+      distance[i]=cost[startnode][i];
+      pred[i]=startnode;
+      visited[i]=0;
+   }
+   distance[startnode]=0;
+   visited[startnode]=1;
+   count=1;
+   while(count<n-1) {
+      mindistance=INFINITY;
+      for(i=0;i<n;i++)
+         if(distance[i]<mindistance&&!visited[i]) {
+         mindistance=distance[i];
+         nextnode=i;
+      }
+      visited[nextnode]=1;
+      for(i=0;i<n;i++)
+         if(!visited[i])
+      if(mindistance+cost[nextnode][i]<distance[i]) {
+         distance[i]=mindistance+cost[nextnode][i];
+         pred[i]=nextnode;
+      }
+      count++;
+   }
+   for(i=0;i<n;i++)
+   if(i!=startnode) {
+      cout<<"\nDistance of node "<<i<<" = "<<distance[i];
+      cout<<"\nPath = "<<i;
+      j=i;
+      do {
+         j=pred[j];
+         cout<<" <- "<<j;
+      }while(j!=startnode);
+   }
+}
+
+void menu(){
+cout<<"Menu:"<<end;
+cout<<"1.Shortest path between any pair of nodes"<<end;
+cout<<"2.Spanning Tree"<<end;
+cout<<"3.All shortest paths:"<<end;
+cout<<"#.Exit"<<end;
+cout<<"Choose: ";
+}
+
+void choice(){
+    menu();
+    char choice;
+    cin>>choice;
+    if(choice=='1')
+    {
+        int u=8;
+        dijkstra(nodes,u);
+    }else if(choice=='2')
+    {
+    }else if(choice=='3')
+    {
+        for(int i=0;i<nodes;i++){
+            int flaq=0;
+            for(int j=0;j<nodes;j++){
+                if(G[i][j]!=0){
+                    flag=1;
+                }
+            }
+            if(flag==1){
+                dijkstra(nodes,i);
+            }else{
+            cout<<"Node "<<i<<"go nowhere"<<endl;
+            }
+    }
+    }else if(choice=='#')
+    {
+        cout<<"BYE!"<<endl;
+        return;
+    }else{
+      choice();
+      return;
+    }
+}
+void initializeVector(){
+    vector<int> test;
+    for(int i = 0;i<nodes;i++){
+            for(int j = 0;j<nodes;j++){
+                    test.push_back(0);
+            }
+            G.push_back(test);
+        }
+
+       for(int i = 0;i<dest.size();i++){
+            G[dest[i].x][dest[i].y] = dest[i].w;
+       }
+}
+void printVectior(){
+     for(int i = 0;i<nodes;i++){
+        for(int j = 0;j<nodes;j++){
+                cout<<G[i][j]<<" ";
+        }
+        cout<<endl;
+}
+int main() {
+    readText();
+    initializeVector();
+    printVectior();
+    choice();
+    return 0;
+}
