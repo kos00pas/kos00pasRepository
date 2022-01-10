@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <title>QuestionChatbot</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <script type="text/babel" src="KnowladgeBase.js"></script>
+    <script type="text/babel" src="YourOldQuestionsList.js"></script>
+    <script type="text/babel" src="AskedMe.js"></script>
+    <style>
+        body { background-color: #0098C1; }
+
+        a:link, a:visited {
+            background-color: white;
+            color: black;
+            border: 2px solid green;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover, a:active {
+            background-color: green;
+            color: white;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation-name: example;
+            animation-duration: 13s;
+        }
+
+        @keyframes example {
+            0%   {background-color:red; left:0px; top:0px;}
+            25%  {background-color:#7700ff;  left:1000px; top:0px;}
+            50%  {background-color:blue; left:200px; top:200px;}
+            75%  {background-color: rgba(0, 51, 128, 0.37); left:333px; top:432px;}
+            100% {background-color: #7700ff; left:0px; top:0px;}
+        }
+        </style>
+    </style>
+</head>
+
+<body>
+        <br>
+        <br>
+        <nav>
+        <a href="/Askedme.html">Ask me! </a>
+        <a href="/knowledge.html">knowledge Base </a>
+        <a href="/yourOld.html">your Old Questions </a>
+        </nav>
+        <div></div>
+</body>
+</html>

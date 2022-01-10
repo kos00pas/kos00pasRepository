@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+<body>
+<h1> this is the first heading</h1>
+<p> this is the description</p>
+<div id ="point1"> <h1> test test</h1> </div>
+<!-- div id ="point2"> </div> -->
+
+<script type="text/babel">
+    const element= <h1>hello</h1>
+    const point2element= <h1>ti kaneis</h1>
+    ReactDOM.render(element, document.getElementById('point1'))
+    //   ReactDOM.render(point2element, document.getElementById('point2'))
+</script>
+
+<!-- paradigma function
+<script type="text/babel">
+    function tick(){
+        const element = (
+            <div>
+                <h1> Hello world</h1>
+                <h2> It is {new Date().toLocaleTimeString()} </h2>
+            </div>
+        );
+        ReactDOM.render(element, document.getElementById("point1"))
+    }
+    setInterval(tick,1000);
+</script>
+-->
+
+<script type="text/babel">
+    class Clock extends React.Component {
+        constructor(props) {
+            super(props);
+            this.name= props.name;
+            this.state = {date: new Date()};
+        }
+
+        tick() {
+            this.setState({
+                date: new Date()
+            });
+        }
+
+        componentDidMount() {
+            setInterval (this.tick(),1000);
+        }
+
+        componentWillUnmount() {
+            //clearInterval(this.timerID);
+        }
+
+
+        render() {
+            return (
+                <div>
+                    <h1>Hello, world!</h1>
+                    <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                </div>
+            );
+        }
+    }
+    ReactDOM.render(<Clock name="X"/>, document.getElementById('point1'))
+</script>
+
+</body>
+</html>
